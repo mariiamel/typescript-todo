@@ -1,38 +1,153 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Open+Sans&display=swap');
+/* base level */
+.app {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
+  color: slateblue;
+}
+.container {
+  position: relative;
+  z-index: 0;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  width: 100%;
+  height: 92vh;
+}
+/* notice how we use the BEM methodology for CSS */
+  /* B - Block: A standalone entity */
+    /* in this case font styling */
+  /* E - Element: An element inside of the block */
+    /* look out for this in the rest of the CSS file */
+  /* M - Modifier: A flag on a block; generally used to change appearance, behavior or state */
+    /* in this case different sizing of font */
+/* For more information, go to http://getbem.com/ */
+.content {
+  font-family: "Open Sans", sans-serif;
+}
+.content--one {
+  font-size: 1.1rem;
+}
+.content--two {
+  font-size: 0.9rem;
+}
+.heading {
+  font-family: "Balsamiq Sans", cursive;
+}
+.heading--one {
+  font-size: 1.5rem;
+}
+.heading--two {
+  font-size: 1.1rem;
+}
+/* layout */
+  /* layout comes first, as it's shared by both header and footer */
+  /* since these also have exclusive properties, we include them afterwards */
+  /* this follows the notion of cascading style sheets where the last value declared is the one that sticks */
+.layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: slateblue;
+  color: whitesmoke;
+}
+.footer {
+  justify-content: space-around;
+  align-items: center;
+  height: 3%;
+}
+.header {
+  justify-content: center;
+  align-items: center;
+  height: 5%;
+}
+/* components */
+.list {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 65%;
+  height: 70%;
+  border-radius: 5px;
+  box-shadow: 0 0 1.5px 1px slateblue;
+}
+/* Think BEM */
+/* has no standaloone value of its own outside of the list component */
+/* is semantically tied to its block (list) */
+.list__body {
+  width: 100%;
+  height: 90%;
+}
+.list__header {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  height: 10%;
+}
+.list__header__add {
+  cursor: pointer;
+}
+.list__item {
+  margin: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr 4fr;
+  align-content: center;
+  align-items: center;
+  width: 95%;
+  height: 15%;
+  background-color: slateblue;
   color: white;
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow-y: scroll;
 }
 
-.App-link {
-  color: #61dafb;
+.modal {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  width: 22%;
+  height: 32%;
+  border-radius: 5px;
+  box-shadow: 0 0 2.5px 1px slateblue;
+  background-color: white;
 }
+.modal--active {
+  display: block;
+}
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal__form__button {
+  padding: 0.3rem 1rem;
+  background-color: slateblue;
+  color: white;
+  border: none;
+  border-radius: 2px;
+}
+.modal__form__field {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+}
+.modal__form__field--submit {
+  justify-content: flex-end;
+}
+/* pages */
+  /* We aren't dealing with pages, however it's good practice to set a base and work from there */
+  /* This makes responsive design significantly easier */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+/* utilities */
+  /* Nothing in here for this project, but it rounds out how I create my CSS flow */
