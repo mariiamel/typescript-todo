@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 // Page Components
-import { List } from './components';
+import { List, Modal } from './components';
 
 // Layout Components
 import { Footer, Header } from './layout';
@@ -21,9 +21,18 @@ export interface ToDo {
 
 export default function App() {
 
+  const [modalOpen, setModalOpen] = useState(true);
   const [toDos, setToDos] = useState<ToDo[]>(mockData);
 
+  const addNewToDo = (newToDo: ToDo) => {
+    setToDos(toDos => [...toDos, newToDo]);
+  };
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+    // modalOpen ? setModalOpen(false) : setModalOpen(true);
+  };
 
+  let modalClassname = modalOpen ? "modal modal--active" : "modal";
 
   return (
     <div className="app">
@@ -32,7 +41,11 @@ export default function App() {
         <List 
           toDos={toDos}
         />
-        {/* <Modal /> */}
+        <Modal 
+          addNewToDo={addNewToDo}
+          className={modalClassname}
+          toggleModal={toggleModal}
+        />
       </div>
       <Footer />
     </div>

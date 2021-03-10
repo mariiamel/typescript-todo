@@ -1,3 +1,4 @@
 import List from './List';
+import Modal from './Modal';
 
-export { List };
+export { List, Modal };
