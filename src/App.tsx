@@ -20,7 +20,14 @@ export default function App() {
   }
 
   const toggleModal = () => {
-    modalOpen ? setModalOpen(false) : setModalOpen(true)
+    // modalOpen ? setModalOpen(false) : setModalOpen(true)
+    setModalOpen(!modalOpen)
+  }
+
+  const updateToDos = (toDoIndex:number) => {
+    let tempToDos = [...toDos]
+    tempToDos[toDoIndex].complete = !tempToDos[toDoIndex].complete
+    setToDos(tempToDos)
   }
 
   let modalClassname = modalOpen ? 'modal modal--active' : 'modal'
@@ -30,7 +37,9 @@ export default function App() {
       <Header />
       <div className="container">
         <List 
-          toDos={toDos} 
+          toDos={toDos}
+          toggleModal={toggleModal}
+          updateToDos={updateToDos} 
         />
         <Modal 
           addNewToDo={addNewToDo}

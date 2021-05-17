@@ -17,8 +17,8 @@ export default function Modal(props: ModalProps) {
         let newToDo = { name, dueDate, complete }
         if (name && dueDate) {
             props.addNewToDo(newToDo)
+            props.toggleModal()
         } 
-        props.toggleModal()
     }
 
     return(
