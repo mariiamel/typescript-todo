@@ -1,4 +1,4 @@
-import List from './List';
-import Modal from './Modal';
+import List from './List'
+import Modal from './Modal'
 
-export { List, Modal }
+export { List, Modal };
